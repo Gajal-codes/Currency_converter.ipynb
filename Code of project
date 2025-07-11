@@ -1,0 +1,31 @@
+print("💱 Welcome to the Currency Converter App")
+
+# Display available currencies
+print("\nAvailable Currencies:")
+print("1. USD (US Dollar)")
+print("2. EUR (Euro)")
+print("3. INR (Indian Rupee)")
+print("4. GBP (British Pound)")
+
+# Currency rates with respect to INR
+rates = {
+    'USD': 83.2,
+    'EUR': 90.1,
+    'INR': 1,
+    'GBP': 105.5
+}
+
+# Take user input
+from_currency = input("\nEnter the currency you want to convert from (USD/EUR/INR/GBP): ").upper()
+to_currency = input("Enter the currency you want to convert to (USD/EUR/INR/GBP): ").upper()
+amount = float(input("Enter the amount to convert: "))
+
+# Check if currencies are valid
+if from_currency in rates and to_currency in rates:
+    # Convert to INR first
+    amount_in_inr = amount * rates[from_currency]
+    # Then convert INR to target currency
+    converted_amount = amount_in_inr / rates[to_currency]
+    print(f"\n✅ {amount} {from_currency} = {round(converted_amount, 2)} {to_currency}")
+else:
+    print("\n⚠️ Invalid currency input. Please use only USD, EUR, INR, or GBP.")
